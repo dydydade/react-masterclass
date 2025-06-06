@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { keyframes } from "styled-components";
 
 const Wrapper = styled.div`
+  background-color: ${props => props.theme.backgroundColor};
   width: 100vw;
   height: 100vh;
   display:flex;
@@ -32,7 +33,7 @@ const Emoji = styled.span`
 const Box = styled.div`
   height: 100px;
   width: 100px;
-  background-color: tomato;
+  background-color: ${props => props.theme.textColor};
   animation: ${animation} 1s linear infinite;
   display: flex;
   justify-content: center;
