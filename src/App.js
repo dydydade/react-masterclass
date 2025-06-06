@@ -1,28 +1,50 @@
 import styled from "styled-components";
+import { keyframes } from "styled-components";
 
-const Father = styled.div`
+const Wrapper = styled.div`
   display:flex;
 `;
 
-const Button = styled.button`
-  color: white;
-  background-color: tomato;
-  border: 0;
-  border-radius: 15px;
-  padding: 20px;
+const animation = keyframes`
+  0% {
+    transform: rotate(0deg);
+    border-radius: 0px;
+  } 
+  50% {
+    /* transform: rotate(360deg); */
+    border-radius: 100px;
+  }
+  100% {
+    transform: rotate(360deg);
+    border-radius: 0px;
+  }
 `;
 
-const Input = styled.input.attrs({ required: true })`
-  background-color: skyblue;
+const Box = styled.div`
+  height: 100px;
+  width: 100px;
+  background-color: tomato;
+  animation: ${animation} 1s linear infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  span {
+    font-size: 28px;
+    cursor: pointer;
+    &:hover {
+      font-size: 42px;
+    }
+  }
 `;
+
 
 function App() {
   return (
-    <Father>
-      <Input></Input>
-      <Button>Submit</Button>
-      <Button as="a">Link</Button>
-    </Father>
+    <Wrapper>
+      <Box>
+        <span>😊</span>
+      </Box>
+    </Wrapper>
   );
 }
 
