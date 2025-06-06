@@ -4,24 +4,24 @@ const Father = styled.div`
   display:flex;
 `;
 
-const Box = styled.div`
-  background-color: ${(props) => props.bgColor};
-  width: 100px;
-  height: 100px;
+const Button = styled.button`
+  color: white;
+  background-color: tomato;
+  border: 0;
+  border-radius: 15px;
+  padding: 20px;
 `;
 
-const Circle = styled(Box)`
-  background-color: ${(props) => props.bgColor};
-  width:100px;
-  heigth: 100px;
-  border-radius: 50px;
-`
+const Input = styled.input.attrs({ required: true })`
+  background-color: skyblue;
+`;
 
 function App() {
   return (
     <Father>
-      <Box bgColor="teal" />
-      <Circle bgColor="tomato" />
+      <Input></Input>
+      <Button>Submit</Button>
+      <Button as="a">Link</Button>
     </Father>
   );
 }
