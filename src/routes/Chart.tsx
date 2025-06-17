@@ -8,8 +8,8 @@ interface ChartProps {
 }
 
 interface IHistorical {
-    time_open: string,
-    time_close: string,
+    time_open: number,
+    time_close: number,
     open: number,
     high: number,
     low: number,
@@ -47,6 +47,9 @@ function Chart({ coinId }: ChartProps) {
             },
             grid: { show:false },
             tooltip: {
+                y: {
+                    formatter: (value) => `$${value.toFixed(3)}`
+                },
                 style: {
                 fontSize: '14px',
                 fontFamily: 'Helvetica, Arial, sans-serif',
@@ -61,7 +64,14 @@ function Chart({ coinId }: ChartProps) {
             xaxis: {
                 axisBorder: {show: false},
                 axisTicks: {show: false},
-                labels: {show: false}
+                type: "datetime",
+                labels: {
+                    show: false,
+                    datetimeFormatter: {month: "mmm 'yy"}
+                },
+                categories: data?.map((price) =>
+                    new Date(price.time_close * 1000).toISOString()
+                ),
             }
         }}
         >
